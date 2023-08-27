@@ -24,10 +24,7 @@ namespace TicTacToe
 
             SetField();
 
-            #region//Check for the winning condition
 
-
-            #endregion
             do
             {
                 if (player == 2)
@@ -43,6 +40,38 @@ namespace TicTacToe
                 }
 
                 SetField();
+
+            #region//Check for the winning condition
+            char[] playerChars = { 'X', 'O' };
+
+            foreach (var playerChar in playerChars)
+            {
+                if (    (playField[0, 0] == playerChar) && (playField[0, 1] == playerChar) && (playField[0, 2] == playerChar)
+                     || (playField[1, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[1, 2] == playerChar)
+                     || (playField[1, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[1, 2] == playerChar)
+
+                     || (playField[0, 0] == playerChar) && (playField[1, 0] == playerChar) && (playField[2, 0] == playerChar)
+                     || (playField[0, 1] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 1] == playerChar)
+                     || (playField[2, 0] == playerChar) && (playField[2, 1] == playerChar) && (playField[2, 2] == playerChar)
+
+                     || (playField[0, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 2] == playerChar)
+                     || (playField[0, 2] == playerChar) && (playField[1, 1] == playerChar) && (playField[0, 2] == playerChar)
+
+                     || (playField[2, 0] == playerChar) && (playField[2, 1] == playerChar) && (playField[2, 2] == playerChar))
+                {
+                        if (playerChar == 'X')
+                        {
+                            Console.WriteLine($"Player 2 is the Winner!!!");
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Player 1 is the Winner!!!");
+                        }
+
+                }
+            }
+            #endregion
+
 #region //Test if field is already taken
                 do
                 {
