@@ -6,10 +6,27 @@ using System.Threading.Tasks;
 
 namespace TicTacToe
 {
-    internal class Program
+    class Program
     {
         static void Main(string[] args)
         {
+            SetField();
+
+            Console.ReadKey();
+        }
+
+        public static void SetField()
+        {
+            Console.WriteLine("     |     |     ");
+            Console.WriteLine($"  {1}  |  {2}  |  {3} ");
+            Console.WriteLine("_____|_____|_____");
+            Console.WriteLine("     |     |     ");
+            Console.WriteLine($"  {1}  |  {2}  |  {3} ");
+            Console.WriteLine("_____|_____|_____");
+            Console.WriteLine("     |     |     ");
+            Console.WriteLine($"  {1}  |  {2}  |  {3} ");
+            Console.WriteLine("     |     |     ");
         }
     }
 }
+
