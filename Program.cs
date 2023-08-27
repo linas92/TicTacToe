@@ -24,8 +24,6 @@ namespace TicTacToe
             string stringInput;
             bool isInputValid = true;
 
-            SetField();
-
             do
             {
                 if (player == 2)
@@ -33,32 +31,29 @@ namespace TicTacToe
                     player = 1;
                     EnterXorO(player, input);
                 }
-
                 else if (player == 1)
                 {
                     player = 2;
                     EnterXorO(player, input);
                 }
-
                 SetField();
 
-            #region//Check for the winning condition
-            char[] playerChars = { 'X', 'O' };
+#region//Check for the winning condition
+            char[] playerChars = { 'X', ' ' };
 
-            foreach (var playerChar in playerChars)
+            foreach (char playerChar in playerChars)
             {
-                if (    (playField[0, 0] == playerChar) && (playField[0, 1] == playerChar) && (playField[0, 2] == playerChar)
-                     || (playField[1, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[1, 2] == playerChar)
-                     || (playField[1, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[1, 2] == playerChar)
+                if (    
+                    (playField[0, 0] == playerChar) && (playField[0, 1] == playerChar) && (playField[0, 2] == playerChar) ||
+                    (playField[1, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[1, 2] == playerChar) ||
+                    (playField[2, 0] == playerChar) && (playField[2, 1] == playerChar) && (playField[2, 2] == playerChar) ||
 
-                     || (playField[0, 0] == playerChar) && (playField[1, 0] == playerChar) && (playField[2, 0] == playerChar)
-                     || (playField[0, 1] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 1] == playerChar)
-                     || (playField[2, 0] == playerChar) && (playField[2, 1] == playerChar) && (playField[2, 2] == playerChar)
+                    (playField[0, 0] == playerChar) && (playField[1, 0] == playerChar) && (playField[2, 0] == playerChar) ||
+                    (playField[0, 1] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 1] == playerChar) ||
+                    (playField[0, 2] == playerChar) && (playField[1, 2] == playerChar) && (playField[2, 2] == playerChar) ||
 
-                     || (playField[0, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 2] == playerChar)
-                     || (playField[0, 2] == playerChar) && (playField[1, 1] == playerChar) && (playField[0, 2] == playerChar)
-
-                     || (playField[2, 0] == playerChar) && (playField[2, 1] == playerChar) && (playField[2, 2] == playerChar)
+                    (playField[0, 0] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 2] == playerChar) ||
+                    (playField[0, 2] == playerChar) && (playField[1, 1] == playerChar) && (playField[2, 0] == playerChar)
                      )
                 {
                     if (playerChar == 'X')
@@ -81,6 +76,7 @@ namespace TicTacToe
                     Console.WriteLine("\nWE HAVE A DRAW!!!");
                     Console.WriteLine("\nPlease press any key to reset the game");
                     Console.ReadLine();
+
                     ResetField();
                     break;
                 }
@@ -141,14 +137,13 @@ namespace TicTacToe
 
                     else
                     {
-                        Console.WriteLine("Incorrect input. Please use a field that is empty");
+                        Console.WriteLine("\nIncorrect input. Please use a field that is empty");
                         isInputValid = false;
                     }
 
-                } while (isInputValid != true);
+                } while (isInputValid == false);
 #endregion 
-
-            } while (isInputValid);
+            } while (isInputValid == true);
         }
 
         public static void SetField()
@@ -176,37 +171,19 @@ namespace TicTacToe
             }
             else if (player == 2)
             {
-                playerSign = 'O';
+                playerSign = ' ';
             }
             switch (input)
             {
-                case 1:
-                    playField[0, 0] = playerSign;
-                    break;
-                case 2:
-                    playField[0, 1] = playerSign;
-                    break;
-                case 3:
-                    playField[0, 2] = playerSign;
-                    break;
-                case 4:
-                    playField[1, 0] = playerSign;
-                    break;
-                case 5:
-                    playField[1, 1] = playerSign;
-                    break;
-                case 6:
-                    playField[1, 2] = playerSign;
-                    break;
-                case 7:
-                    playField[2, 0] = playerSign;
-                    break;
-                case 8:
-                    playField[2, 1] = playerSign;
-                    break;
-                case 9:
-                    playField[2, 2] = playerSign;
-                    break;
+                case 1: playField[0, 0] = playerSign; break;
+                case 2: playField[0, 1] = playerSign; break;
+                case 3: playField[0, 2] = playerSign; break;
+                case 4: playField[1, 0] = playerSign; break;
+                case 5: playField[1, 1] = playerSign; break;
+                case 6: playField[1, 2] = playerSign; break;
+                case 7: playField[2, 0] = playerSign; break;
+                case 8: playField[2, 1] = playerSign; break;
+                case 9: playField[2, 2] = playerSign; break;
             }
         }
 
